@@ -75,4 +75,11 @@ Vagrant.configure("2") do |config|
     sudo apt-cache madison docker-ce
     sudo apt-get -y install docker-ce=18.06.0~ce~3-0~ubuntu
   SHELL
+
+  config.vm.provision "shell", name: "openvswitch", inline: <<-SHELL
+    sudo apt-get -y install openvswitch-common openvswitch-dbg openvswitch-switch python-openvswitch openvswitch-ipsec openvswitch-pki openvswitch-vtep
+    sudo apt-get -y install bridge-utils
+    sudo apt-get -y install arping
+  SHELL
+
 end
